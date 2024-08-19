@@ -10,14 +10,15 @@
  * execute_command - execute the command
  * Return: nothing
  **/
-extern char **environ;
+/*extern char **environ;*/
 
 void execute_command(char *command)
 {
         pid_t pid;
         int status;
         char *argv[2];
-	argv[0] = strdup(command);
+	char *env[] = {NULL};
+	argv[0] = command;
 	argv[1] = NULL;
 
         pid = fork();
@@ -29,7 +30,7 @@ void execute_command(char *command)
 	}
         if (pid == 0)
         {
-                if (execve(command, argv, environ) == -1)
+                if (execve(command, argv, env) == -1)
                 {
                         perror("Error with execve");
                         exit(EXIT_FAILURE);
