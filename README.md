@@ -1,5 +1,4 @@
-
-![SIMPLE SHELL IN C](https://github.com/user-attachments/assets/24d4dcc6-b7f3-495e-b63c-aab268d3a990)
+![Chutima Puthachon](https://github.com/user-attachments/assets/374c63d6-d591-44ee-b319-15219d4de2ff)
 
 Description
 
