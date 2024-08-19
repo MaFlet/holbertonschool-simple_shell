@@ -19,7 +19,7 @@ char *read_command(void) {
 		}
 		else
 		{
-			perror("getline");
+			perror("getline failed...");
 			free(command);
 			exit(EXIT_FAILURE);
 		}	
