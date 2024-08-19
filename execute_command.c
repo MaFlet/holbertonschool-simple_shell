@@ -22,6 +22,8 @@ void execute_command(char *command)
 	argv[1] = NULL;
 
         pid = fork();
+	if (command == NULL || *command == '\0')
+	{
 	if (pid == -1)
 	{
 		perror("Fork failed");
@@ -43,4 +45,6 @@ void execute_command(char *command)
 			perror("Waitpid failed");
 		}
         }
+	return;
+	}
 }
