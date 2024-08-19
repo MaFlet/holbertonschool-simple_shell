@@ -10,10 +10,7 @@ int main(void)
 	{
 		print_prompt();
 		command = read_command();
-		if (command && *command)
-		{
-			execute_command(command);
-		}
+		execute_command(command);
 		free(command);
 	}
 	return (0);
