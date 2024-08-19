@@ -6,7 +6,8 @@ int main(void)
 	char *command;
 
 	print_prompt();
-	// execute();
+	command = read_command();
+	execute_command(command);
 	
 	return (0);
 }
