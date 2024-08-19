@@ -1,3 +1,4 @@
+#include <string.h>
 /**
  * _strtrim - Trims leading and trailing whitespace from a string.
  * @str: The string to be trimmed.
