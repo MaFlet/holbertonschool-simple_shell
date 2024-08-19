@@ -19,10 +19,4 @@ int main(void)
 		free(command);
 	}
 	return (0);
-	if (isatty(STDIN_FILENO) == 1)
-        printf("Interactive mode\n");
-	else
-	printf("Not in interactive mode\n");
-
-return (0);
 }
