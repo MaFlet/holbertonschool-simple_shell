@@ -10,7 +10,8 @@
  * execute_command - execute the command
  * Return: nothing
  **/
-/*extern char **environ;*/
+
+extern char **environ;
 
 void execute_command(char *command)
 {

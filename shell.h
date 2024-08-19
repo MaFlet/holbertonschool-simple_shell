@@ -9,7 +9,6 @@
 void print_prompt(void);
 char *read_command(void);
 void execute_command(char *command);
-void interactive();
-void non_interactive();
+char *_strtrim(char *str);
 
 #endif /* SHELL */
