@@ -11,7 +11,7 @@ char *read_command(void) {
 	input = getline(&command, &bufsize, stdin);
 	if (input == -1)
 	{
-		if (stdin == NULL)
+		if (input == EOF)
 		{
 			printf("\n");
 			free(command);

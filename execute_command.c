@@ -21,30 +21,31 @@ void execute_command(char *command)
 	argv[0] = command;
 	argv[1] = NULL;
 
-        pid = fork();
 	if (command == NULL || *command == '\0')
 	{
+		return;
+	}
+        pid = fork();
 	if (pid == -1)
 	{
 		perror("Fork failed");
 		free(argv[0]);
 		return;
 	}
-        if (pid == 0)
-        {
-                if (execve(command, argv, env) == -1)
-                {
-                        perror("Error with execve");
-                        exit(EXIT_FAILURE);
-                }
-        }
-        else
-        {
+       	if (pid == 0)
+       	{
+               	if (execve(command, argv, env) == -1)
+               	{
+                       	perror("Error with execve");
+                       	exit(EXIT_FAILURE);
+               	}
+       	}
+       	else
+       	{
 		if (waitpid(pid, &status, 0) == -1)
 		{
 			perror("Waitpid failed");
 		}
-        }
+       	}
 	return;
-	}
 }
