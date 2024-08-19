@@ -16,5 +16,6 @@
 void print_prompt(void);
 char *read_command(int interactive);
 void execute_command(char *command);
+char *_strtrim(char *str);
 
 #endif /* SHELL */
