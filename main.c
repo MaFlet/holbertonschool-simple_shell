@@ -5,9 +5,11 @@ int main(void)
 {
 	char *command;
 
-	print_prompt();
-	command = read_command();
-	execute_command(command);
-	
+	while (1)
+	{
+		print_prompt();
+		command = read_command();
+		execute_command(command);
+	}
 	return (0);
 }
