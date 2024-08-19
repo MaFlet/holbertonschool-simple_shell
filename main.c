@@ -3,8 +3,11 @@
 
 int main(void)
 {
+	char *command;
+
 	print_prompt();
-	// get_input();
+	command = read_command();
 	// execute();
+	
 	return (0);
 }
