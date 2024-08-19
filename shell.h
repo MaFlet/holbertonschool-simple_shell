@@ -7,6 +7,6 @@
 } struct_name; */
 
 void print_prompt(void);
-void get_input();
+char *read_command(void);
 
 #endif /* SHELL */
