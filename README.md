@@ -1,6 +1,7 @@
-![SIMPLE SHELL IN C](https://github.com/user-attachments/assets/1e9b2771-399b-4aee-b39f-ebb8522304b6)
-Description
 
+![SIMPLE SHELL IN C](https://github.com/user-attachments/assets/24d4dcc6-b7f3-495e-b63c-aab268d3a990)
+
+Description
 
 Requirement for the project
 
