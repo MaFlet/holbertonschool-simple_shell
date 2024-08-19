@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "shell.h"
 
 int main(void)
@@ -9,7 +10,11 @@ int main(void)
 	{
 		print_prompt();
 		command = read_command();
-		execute_command(command);
+		if (command && *command)
+		{
+			execute_command(command);
+		}
+		free(command);
 	}
 	return (0);
 }
