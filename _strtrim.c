@@ -1,9 +1,9 @@
 #include <string.h>
+
 /**
- * _strtrim - Trims leading and trailing whitespace from a string.
- * @str: The string to be trimmed.
- *
- * Return: A pointer to the trimmed string.
+ * _strtrim - Trims leading and trailing whitespace from a string
+ * @str: The string to be trimmed
+ * Return: A pointer to the trimmed string
  */
 char *_strtrim(char *str)
 {
