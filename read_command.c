@@ -3,10 +3,15 @@
 #include <string.h>
 #include "shell.h"
 
-char *read_command(void) {
+char *read_command(int interactive) {
 	char *command = NULL;
 	size_t bufsize = 0;
 	ssize_t input;
+
+	if (interactive)
+	{
+		print_prompt();
+	}
 
 	input = getline(&command, &bufsize, stdin);
 	if (input == -1)

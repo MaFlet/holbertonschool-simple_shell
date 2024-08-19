@@ -10,7 +10,6 @@
  * execute_command - execute the command
  * Return: nothing
  **/
-
 extern char **environ;
 
 void execute_command(char *command)
@@ -18,24 +17,23 @@ void execute_command(char *command)
         pid_t pid;
         int status;
         char *argv[2];
-	char *env[] = {NULL};
-	argv[0] = command;
-	argv[1] = NULL;
 
 	if (command == NULL || *command == '\0')
 	{
 		return;
 	}
+	argv[0] = command;
+        argv[1] = NULL;
+
         pid = fork();
 	if (pid == -1)
 	{
-		perror("Fork failed");
-		free(argv[0]);
+		perror("Fork failed...");
 		return;
 	}
        	if (pid == 0)
        	{
-               	if (execve(command, argv, env) == -1)
+               	if (execve(command, argv, environ) == -1)
                	{
                        	perror("Error with execve");
                        	exit(EXIT_FAILURE);
