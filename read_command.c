@@ -11,14 +11,16 @@ char *read_command(void) {
 	input = getline(&command, &bufsize, stdin);
 	if (input == -1)
 	{
-		if (feof(stdin))
+		if (stdin == NULL)
 		{
 			printf("\n");
+			free(command);
 			exit(EXIT_SUCCESS);
 		}
 		else
 		{
 			perror("getline");
+			free(command);
 			exit(EXIT_FAILURE);
 		}	
 	}
