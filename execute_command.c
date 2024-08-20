@@ -54,8 +54,6 @@ void execute_command(char *command)
 		{
 			perror("Waitpid failed");
 		}
-       	}
-	
 		else
 		{
 			if(WIFEXITED(status))
@@ -64,6 +62,5 @@ void execute_command(char *command)
 			}
 		}
 	}
-free(command_path);
-
+	free(command_path);
 }
