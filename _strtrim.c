@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include "shell.h"
+
 /**
  * _strtrim - Trims leading and trailing whitespace from a string
  * @str: The string to be trimmed
@@ -26,6 +28,6 @@ char *_strtrim(char *str)
 
 
 	*(end + 1) = '\0';
-
+	_memmove(str, str, end - str + 2);
 	return (str);
 }

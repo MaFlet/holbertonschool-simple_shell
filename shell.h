@@ -16,7 +16,6 @@ extern char *command_buffer;
 	code here
 } struct_name; */
 
-/*void print_prompt(void);*/
 char *read_command(int interactive);
 void execute_command(char *command);
 char *_strtrim(char *str);
@@ -26,5 +25,6 @@ void clean_up();
 void sigint_handler(int sig);
 int _strcmp(const char *s1, const char *s2);
 size_t _strcspn(const char *s, const char *reject);
+void *_memmove(void *dest, const void *src, size_t n);
 
 #endif /* SHELL */
