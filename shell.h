@@ -8,7 +8,7 @@
 #include <sys/wait.h>
 #include <string.h>
 #include <signal.h>
-
+#include <stddef.h>
 extern char *command_buffer;
 
 /*typedef struct name
@@ -24,4 +24,7 @@ void interactive_mode(void);
 void noninteractive_mode(void);
 void clean_up();
 void sigint_handler(int sig);
+int _strcmp(const char *s1, const char *s2);
+size_t _strcspn(const char *s, const char *reject);
+
 #endif /* SHELL */
