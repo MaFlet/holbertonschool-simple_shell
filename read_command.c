@@ -15,6 +15,10 @@ char *read_command(int interactive)
 	{
 		printf("cisfun$ ");
 	}
+
+	free(command_buffer);
+	command_buffer = NULL;
+
 	input = getline(&command_buffer, &bufsize, stdin);
 	if (input == -1)
 	{
@@ -24,15 +28,12 @@ char *read_command(int interactive)
 			{
 				printf("\n");
 			}
-			free(command_buffer);
-			command_buffer = NULL;
+			clean_up();
 			exit(EXIT_SUCCESS);
 		}
 		else
 		{
 			perror("getline failed...");
-			free(command_buffer);
-			command_buffer = NULL;
 			exit(EXIT_FAILURE);
 		}	
 	}
