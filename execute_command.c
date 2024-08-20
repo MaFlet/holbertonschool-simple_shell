@@ -14,7 +14,9 @@ extern char **environ;
 
 void execute_command(char *command)
 {
-	char *command_path;
+	char *token;
+	int i = 0;
+	/*char *command_path;*/
         pid_t pid;
         int status = 0;
         char *argv[64];
@@ -25,14 +27,21 @@ void execute_command(char *command)
 		exit(status);
 	}
 
-	tokenize_command(command, argv);
+	token = strtok(command, " \t");
+        while (token != NULL && i < 63)
+        {
+                argv[i++] = token;
+                token = strtok(NULL, " \t");
+        }
+        argv[i] = NULL;
+	/*tokenize_command(command, argv);
 	command_path = find_command_path(argv[0]);
 
 	if (command_path == NULL)
 	{
 		fprintf(stderr, "Command not found: %s\n", argv[0]);
 		return;
-	}
+	}*/
 
         pid = fork();
 	if (pid < 0)
@@ -59,6 +68,6 @@ void execute_command(char *command)
 			exit(WEXITSTATUS(status));
 		}
 	}
-	free(command_path);
+	/*free(command_path);*/
 	free(command);
 }
