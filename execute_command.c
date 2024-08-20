@@ -14,22 +14,24 @@ extern char **environ;
 
 void execute_command(char *command)
 {
+	int i = 0;
         pid_t pid;
+	char *token;
         int status;
-        char *argv[2];
+        char *argv[64];
 
-	if (command == NULL || *command == '\0')
+	token = strtok(command, " \t");
+	while (token != NULL && i < 63)
 	{
-		return;
+		argv[i++] = token;
+		token = strtok(NULL, " \t");
 	}
-	argv[0] = command;
-        argv[1] = NULL;
+        argv[i] = NULL;
 
         pid = fork();
-	if (pid == -1)
+	if (pid < 0)
 	{
-		perror("Fork failed...");
-		return;
+		exit(EXIT_FAILURE);
 	}
        	if (pid == 0)
        	{
@@ -46,5 +48,4 @@ void execute_command(char *command)
 			perror("Waitpid failed");
 		}
        	}
-	return;
 }
