@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 /**
@@ -5,7 +7,7 @@
  * @str: The string to be trimmed
  * Return: A pointer to the trimmed string
  */
-/*
+
 char *_strtrim(char *str)
 {
 	char *end;
@@ -26,20 +28,4 @@ char *_strtrim(char *str)
 	*(end + 1) = '\0';
 
 	return (str);
-}*/
-
-char *_strtrim(char *str)
-{
-	char *end;
-
-	while (isspace((unsigned char)*str)) str++;
-
-	if (*str == '\0')
-        	return str;
-
-	end = str + strlen(str) - 1;
-	while (end > str && isspace((unsigned char)*end)) end--;
-
-	*(end + 1) = '\0';
-	return str;
 }
