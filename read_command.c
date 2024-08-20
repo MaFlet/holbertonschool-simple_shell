@@ -10,9 +10,8 @@ char *read_command(int interactive) {
 
 	if (interactive)
 	{
-		print_prompt();
+		printf("cisfun$ ");
 	}
-
 	input = getline(&command, &bufsize, stdin);
 	if (input == -1)
 	{
@@ -34,5 +33,6 @@ char *read_command(int interactive) {
 	{
 		command[input - 1] = '\0';
 	}
+	command = _strtrim(command);
 	return(command);
 }
