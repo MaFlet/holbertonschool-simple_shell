@@ -13,9 +13,11 @@
 	code here
 } struct_name; */
 
-void print_prompt(void);
+/*void print_prompt(void);*/
 char *read_command(int interactive);
 void execute_command(char *command);
-/* char *_strtrim(char *str); */
+char *_strtrim(char *str);
+void interactive_mode(void);
+void noninteractive_mode(void);
 
 #endif /* SHELL */

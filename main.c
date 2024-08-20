@@ -6,17 +6,13 @@
 
 int main(void)
 {
-	int interactive = isatty(fileno(stdin));
-	char *command;
-
-	while (1)
+	if (isatty(fileno(stdin)))
 	{
-		command = read_command(interactive);
-		if (command && *command != '\0')
-		{
-			execute_command(command);
-		}
-		free(command);
+		interactive_mode();
 	}
-	return (0);
+	else
+	{
+		noninteractive_mode();
+	}
+	return (EXIT_SUCCESS);
 }
