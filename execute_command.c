@@ -19,6 +19,11 @@ void execute_command(char *command)
 	char *token;
         int status;
         char *argv[64];
+	
+	if (strcmp(command, "exit") == 0)
+	{
+		exit(0);
+	}
 
 	token = strtok(command, " \t");
 	while (token != NULL && i < 63)
