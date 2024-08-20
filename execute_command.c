@@ -22,7 +22,7 @@ void execute_command(char *command)
 	if (_strcmp(command, "exit") == 0)
 	{
 		free(command);
-		exit(0);
+		exit(status);
 	}
 
 	tokenize_command(command, argv);
@@ -55,11 +55,9 @@ void execute_command(char *command)
 			perror("Waitpid failed");
 		}
 		else
+		if (WIFEXITED(status))
 		{
-			if(WIFEXITED(status))
-			{
-				exit(WEXITSTATUS(status));
-			}
+			exit(WEXITSTATUS(status));
 		}
 	}
 	free(command_path);
