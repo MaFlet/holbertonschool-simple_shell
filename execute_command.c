@@ -90,7 +90,7 @@ void execute_command(char *command)
 {
         int i = 0;
         pid_t pid;
-        char *token;
+        char *token, *command_path;
         int status;
         char *argv[64];
 
@@ -101,6 +101,15 @@ void execute_command(char *command)
                 token = strtok(NULL, " \t");
         }
         argv[i] = NULL;
+	
+	tokenize_command(command, argv);
+        command_path = find_command_path(argv[0]);
+
+        if (command_path == NULL)
+        {
+                fprintf(stderr, "Command not found: %s\n", argv[0]);
+                return;
+        }
 
         pid = fork();
         if (pid < 0)
@@ -123,4 +132,6 @@ void execute_command(char *command)
                         perror("Waitpid failed");
                 }
         }
+	free(command_path);
+        free(command);
 }
