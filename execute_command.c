@@ -16,7 +16,7 @@ void execute_command(char *command)
 {
 	char *command_path;
         pid_t pid;
-        int status;
+        int status = 0;
         char *argv[64];
 	
 	if (_strcmp(command, "exit") == 0)
