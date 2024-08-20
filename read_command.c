@@ -17,7 +17,10 @@ char *read_command(int interactive) {
 	{
 		if (input == EOF)
 		{
-			printf("\n");
+			if (interactive)
+			{
+				printf("\n");
+			}
 			free(command);
 			exit(EXIT_SUCCESS);
 		}
