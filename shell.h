@@ -7,6 +7,9 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <string.h>
+#include <signal.h>
+
+extern char *command_buffer;
 
 /*typedef struct name
 {
@@ -19,5 +22,6 @@ void execute_command(char *command);
 char *_strtrim(char *str);
 void interactive_mode(void);
 void noninteractive_mode(void);
-
+void clean_up();
+void sigint_handler(int sig);
 #endif /* SHELL */

@@ -3,8 +3,9 @@
 #include <string.h>
 #include "shell.h"
 
-char *read_command(int interactive) {
-	char *command = NULL;
+char *read_command(int interactive)
+{
+	/*char *command = NULL;*/
 	size_t bufsize = 0;
 	ssize_t input;
 
@@ -12,7 +13,7 @@ char *read_command(int interactive) {
 	{
 		printf("cisfun$ ");
 	}
-	input = getline(&command, &bufsize, stdin);
+	input = getline(&command_buffer, &bufsize, stdin);
 	if (input == -1)
 	{
 		if (input == EOF)
@@ -21,21 +22,21 @@ char *read_command(int interactive) {
 			{
 				printf("\n");
 			}
-			free(command);
+			free(command_buffer);
 			exit(EXIT_SUCCESS);
 		}
 		else
 		{
 			perror("getline failed...");
-			free(command);
+			free(command_buffer);
 			exit(EXIT_FAILURE);
 		}	
 	}
 
-	if (input > 0 && command[input - 1] == '\n')
+	if (input > 0 && command_buffer[input - 1] == '\n')
 	{
-		command[input - 1] = '\0';
+		command_buffer[input - 1] = '\0';
 	}
-	command = _strtrim(command);
-	return(command);
+	command_buffer = _strtrim(command_buffer);
+	return(command_buffer);
 }
