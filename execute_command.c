@@ -94,6 +94,11 @@ void execute_command(char *command)
         int status;
         char *argv[64];
 
+	if (_strcmp(command, "exit") == 0)
+        {
+                free(command);
+                exit(status);
+        }
         token = strtok(command, " \t");
         while (token != NULL && i < 63)
         {
@@ -121,6 +126,10 @@ void execute_command(char *command)
                 if (waitpid(pid, &status, 0) == -1)
                 {
                         perror("Waitpid failed");
+                }
+		else if (WIFEXITED(status))
+                {
+                        exit(WEXITSTATUS(status));
                 }
         }
 }
