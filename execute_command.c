@@ -20,8 +20,9 @@ void execute_command(char *command)
         int status;
         char *argv[64];
 	
-	if (strcmp(command, "exit") == 0)
+	if (_strcmp(command, "exit") == 0)
 	{
+		free(command);
 		exit(0);
 	}
 
