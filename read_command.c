@@ -16,9 +16,6 @@ char *read_command(int interactive)
 		printf("cisfun$ ");
 	}
 
-	free(command_buffer);
-	command_buffer = NULL;
-
 	input = getline(&command_buffer, &bufsize, stdin);
 	if (input == -1)
 	{
