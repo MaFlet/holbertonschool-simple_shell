@@ -28,12 +28,15 @@ char *read_command(int interactive)
 			{
 				printf("\n");
 			}
-			clean_up();
+			free(command_buffer);
+                        command_buffer = NULL;
 			exit(EXIT_SUCCESS);
 		}
 		else
 		{
 			perror("getline failed...");
+			free(command_buffer);
+                        command_buffer = NULL;
 			exit(EXIT_FAILURE);
 		}	
 	}
