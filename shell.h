@@ -27,5 +27,8 @@ void noninteractive_mode(void);
 int _strcmp(const char *s1, const char *s2);
 size_t _strcspn(const char *s, const char *reject);
 void *_memmove(void *dest, const void *src, size_t n);
+char *find_command_path(char *command);
+void tokenize_command(char *command, char **argv);
 void handle_sigint(int sig);
+
 #endif /* SHELL */

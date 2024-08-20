@@ -14,9 +14,8 @@ extern char **environ;
 
 void execute_command(char *command)
 {
-	int i = 0;
+	char *command_path;
         pid_t pid;
-	char *token;
         int status;
         char *argv[64];
 	
@@ -26,13 +25,14 @@ void execute_command(char *command)
 		exit(0);
 	}
 
-	token = strtok(command, " \t");
-	while (token != NULL && i < 63)
+	tokenize_command(command, argv);
+	command_path = find_command_path(argv[0]);
+
+	if (command_path == NULL)
 	{
-		argv[i++] = token;
-		token = strtok(NULL, " \t");
+		fprintf(stderr, "Command not found: %s\n", argv[0]);
+		return;
 	}
-        argv[i] = NULL;
 
         pid = fork();
 	if (pid < 0)
@@ -54,6 +54,8 @@ void execute_command(char *command)
 		{
 			perror("Waitpid failed");
 		}
+       	}
+	
 		else
 		{
 			if(WIFEXITED(status))
@@ -62,4 +64,6 @@ void execute_command(char *command)
 			}
 		}
 	}
+free(command_path);
+
 }
