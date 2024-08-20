@@ -31,11 +31,12 @@ void execute_command(char *command)
         pid = fork();
 	if (pid < 0)
 	{
+		perror("fork failed");
 		exit(EXIT_FAILURE);
 	}
        	if (pid == 0)
        	{
-               	if (execve(command, argv, environ) == -1)
+               	if (execve(argv[0], argv, environ) == -1)
                	{
                        	perror("Error with execve");
                        	exit(EXIT_FAILURE);
