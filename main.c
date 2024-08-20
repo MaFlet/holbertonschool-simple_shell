@@ -6,7 +6,7 @@
 
 int main(void)
 {
-	if (isatty(fileno(stdin)))
+	if (isatty(STDIN_FILENO))
 	{
 		interactive_mode();
 	}
