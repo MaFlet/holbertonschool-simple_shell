@@ -18,6 +18,12 @@ void execute_command(char *command)
         pid_t pid;
         int status;
         char *argv[64];
+	
+	if (_strcmp(command, "exit") == 0)
+	{
+		free(command);
+		exit(0);
+	}
 
 	tokenize_command(command, argv);
 	command_path = find_command_path(argv[0]);
@@ -49,5 +55,15 @@ void execute_command(char *command)
 			perror("Waitpid failed");
 		}
        	}
-	free(command_path);
+	
+		else
+		{
+			if(WIFEXITED(status))
+			{
+				exit(WEXITSTATUS(status));
+			}
+		}
+	}
+free(command_path);
+
 }

@@ -21,12 +21,14 @@ void execute_command(char *command);
 char *_strtrim(char *str);
 void interactive_mode(void);
 void noninteractive_mode(void);
-void clean_up();
-void sigint_handler(int sig);
+/*void clean_up();*/
+/*void sigint_handler(int sig);
+ */
 int _strcmp(const char *s1, const char *s2);
 size_t _strcspn(const char *s, const char *reject);
 void *_memmove(void *dest, const void *src, size_t n);
 char *find_command_path(char *command);
 void tokenize_command(char *command, char **argv);
+void handle_sigint(int sig);
 
 #endif /* SHELL */

@@ -6,7 +6,7 @@
 #include "shell.h"
 
 char *command_buffer = NULL;
-
+/*
 void clean_up()
 {
 	if (command_buffer)
@@ -23,10 +23,18 @@ void sigint_handler(int sig)
 	clean_up();
 	exit(0);
 }
+*/
 
+/* Signal handler for SIGINT */
+void handle_sigint(int sig)
+{
+    printf("\nCaught signal %d. Type 'exit' to quit the shell.\n", sig);
+    printf("cisfun$ ");  /* Reprint the shell prompt */
+    fflush(stdout);      /* Ensure the prompt is displayed immediately */
+}
 int main(void)
 {
-	signal(SIGINT, sigint_handler);
+	signal(SIGINT, handle_sigint);
 
 	if (isatty(STDIN_FILENO))
 	{
@@ -36,6 +44,7 @@ int main(void)
 	{
 		noninteractive_mode();
 	}
-	clean_up();
+/*	clean_up();
+ */
 	return (0);
 }
