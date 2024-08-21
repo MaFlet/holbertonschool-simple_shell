@@ -84,12 +84,16 @@ void execute_command(char *command)
 
 	command = _strtrim(command);	
 	tokenize_command(command, argv);
-	
+
 	if (argv[0] == NULL)
 	{
 		return;
 	}
 
+	if (argv[0] && strncmp(_strtrim(argv[0]), "exit", 4) == 0 && argv[1] == NULL)
+   	{
+		exit(0);
+	}
 	if (_strncmp(argv[0], "env", 3) == 0 && argv[0][3] == '\0')
 	{
 		print_env();
