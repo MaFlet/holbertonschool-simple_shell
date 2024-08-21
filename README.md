@@ -1,8 +1,8 @@
 ![Chutima Puthachon](https://github.com/user-attachments/assets/374c63d6-d591-44ee-b319-15219d4de2ff)
 
-### Description
+### :pencil2: Description
 
-### Requirement for the project
+### ✅ Requirement for the project
 ```Allowed editors: vi, vim, emacs
 All your files will be compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
 All your files should end with a new line
@@ -13,7 +13,7 @@ No more than 5 functions per file
 All your header files should be include guarded
 Use system calls only when you need to
 ```
-### List of allowed functions and system calls
+### ✅ List of allowed functions and system calls
 ```all functions from string.h
 access (man 2 access)
 chdir (man 2 chdir)
@@ -53,13 +53,13 @@ wait4 (man 2 wait4)
 write (man 2 write)
 ```
 
-### Compilation :keyboard:
+### :keyboard: Compilation 
 
 ```gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh```
 
-### Usage
+### :black_square_button: Usage
 
-### Testing
+### :eyeglasses: Testing
 Your shell should work like this in interactive mode:
 ```
 julien@ubuntu:/# ./hsh
@@ -82,13 +82,13 @@ hsh main.c shell.c test_ls_2
 julien@ubuntu:/#
 ```
 
-### File description
+### :open_file_folder: File description
 
-### Installation :computer:
+### :computer: Installation
 
-### Examples
+### :pushpin: Examples
 
-### Authors
+### :neckbeard: Authors
 
 * Mary Fletcher
 * Xi Qern Egan Leong
