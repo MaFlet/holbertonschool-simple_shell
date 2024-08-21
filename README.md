@@ -1,6 +1,7 @@
 ![Chutima Puthachon](https://github.com/user-attachments/assets/374c63d6-d591-44ee-b319-15219d4de2ff)
 
 ### :pencil2: Description
+In this project, we will build a functional Unix shell from scratch, which will mimic some of the behaviors of a standard shell like bash or sh. The shell will be capable of reading user input, parsing commands, executing them, and managing any errors that occur. **The primary objective of this group project** is to collaboratively design and implement a simple Unix shell in C. This shell will be capable of interpreting and executing basic commands, managing built-in functions, handling errors, and working with the Unix PATH environment. Through this project, you will gain a deeper understanding of process control, file I/O, string manipulation, and memory management, all crucial concepts in Unix systems programming
 
 ### ✅ Requirement for the project
 ```Allowed editors: vi, vim, emacs
@@ -85,6 +86,7 @@ julien@ubuntu:/#
 ### :open_file_folder: File description
 
 ### :computer: Installation
+
 
 ### :pushpin: Examples
 
