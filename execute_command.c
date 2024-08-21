@@ -126,26 +126,34 @@ void execute_command(char *command)
 		command_path = argv[0];
 	}
 
-	pid = fork();
-	if (pid < 0)
+	if (access(command_path, X_OK) == 0)
 	{
-		perror("fork failed");
-		exit(EXIT_FAILURE);
-	}
-	if (pid == 0)
-	{
-		if (execve(command_path, argv, environ) == -1)
+	
+		pid = fork();
+		if (pid < 0)
 		{
-			perror("Error with execve");
+			perror("fork failed");
 			exit(EXIT_FAILURE);
+		}
+		if (pid == 0)
+		{
+			if (execve(command_path, argv, environ) == -1)
+			{
+				perror("Error with execve");
+				exit(EXIT_FAILURE);
+			}
+		}
+		else
+		{
+			if (waitpid(pid, &status, 0) == -1)
+			{
+				perror("Waitpid failed");
+			}
 		}
 	}
 	else
 	{
-		if (waitpid(pid, &status, 0) == -1)
-		{
-			perror("Waitpid failed");
-		}
+		fprintf(stderr, "Command not executable or does not exist: %s\n", command_path);
 	}
 
 	if (command_path != argv[0])

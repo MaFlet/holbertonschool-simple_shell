@@ -16,22 +16,26 @@ extern char *command_buffer;
 	code here
 } struct_name; */
 
+/* simple shell prototypes */
 char *read_command(int interactive);
 void execute_command(char *command);
-char *_strtrim(char *str);
 void interactive_mode(void);
 void noninteractive_mode(void);
+char *find_command_path(const char *command);
+void tokenize_command(char *command, char **argv);
+
+/* main.c protypes */
 void clean_up();
 void sigint_handler(int sig);
 
-char *_getenv(const char *name);
-int _strncmp(const char *s1, const char *s2, size_t n);
+/* helper prototypes */
+char *_strdup(const char *s);
 size_t _strlen(const char *str);
-int _strcmp(const char *s1, const char *s2);
+int _strncmp(const char *str1, const char *str2, size_t n);
+char *_getenv(const char *name);
+char *_strtrim(char *str);
 size_t _strcspn(const char *s, const char *reject);
 void *_memmove(void *dest, const void *src, size_t n);
-char *find_command_path(char *command);
-void tokenize_command(char *command, char **argv);
 /*void handle_sigint(int sig);*/
 
 #endif /* SHELL */
