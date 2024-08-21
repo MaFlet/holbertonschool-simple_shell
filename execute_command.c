@@ -90,7 +90,7 @@ void execute_command(char *command)
 		return;
 	}
 
-	if (argv[0] && strncmp(_strtrim(argv[0]), "exit", 4) == 0 && argv[1] == NULL)
+	if (argv[0] && _strncmp(_strtrim(argv[0]), "exit", 4) == 0 && argv[1] == NULL)
    	{
 		exit(0);
 	}
