@@ -12,7 +12,18 @@ char *find_command_path(const char *command)
 	char *path, *dir, *full_path;
 	struct stat st;
 	size_t len;
-
+	
+	if (command[0] == '/' || command[0] == '.')
+	{
+		if (stat(command, &st) == 0 && (st.st_mode & S_IXUSR))
+		{
+			return _strdup(command);
+		}
+		else
+		{
+			return NULL;
+		}
+	}
 	path = _getenv("PATH");
 	if (!path)
 	{
