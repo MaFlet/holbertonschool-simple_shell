@@ -21,7 +21,7 @@ char *_strtrim(char *str)
 	if (*str == 0)
 		return (str);
 
-	end = str + strlen(str) - 1;
+	end = str + _strlen(str) - 1;
 	while (end > str && (*end == ' ' || *end == '\t' || *end == '\n' ||
 	                     *end == '\r' || *end == '\v' || *end == '\f'))
 		end--;
