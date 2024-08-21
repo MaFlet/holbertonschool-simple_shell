@@ -46,7 +46,7 @@ write (man 2 write)
 
 ### Compilation :keyboard:
 
-`gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh`
+```gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh```
 
 ### Usage
 
