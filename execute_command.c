@@ -94,6 +94,7 @@ void execute_command(char *command)
    	{
 		exit(0);
 	}
+
 	if (_strncmp(argv[0], "env", 3) == 0 && argv[0][3] == '\0')
 	{
 		print_env();
