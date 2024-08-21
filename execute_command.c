@@ -92,6 +92,7 @@ void execute_command(char *command)
 
 	if (argv[0] && _strncmp(_strtrim(argv[0]), "exit", 4) == 0 && argv[1] == NULL)
    	{
+		free(argv);
 		exit(0);
 	}
 	if (_strncmp(argv[0], "env", 3) == 0 && argv[0][3] == '\0')
