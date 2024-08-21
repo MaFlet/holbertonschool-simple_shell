@@ -4,11 +4,17 @@
 
 ### Requirement for the project
 
+### List of allowed functions and system calls
+
 ### Compilation :keyboard:
 
 `gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh`
 
 ### Usage
+
+### Testing
+
+### File description
 
 ### Installation :computer:
 
