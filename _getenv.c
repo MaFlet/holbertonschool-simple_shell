@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stddef.h>
-
-extern char **environ;
+#include <stdlib.h>
+#include "shell.h"
 
 size_t _strlen(const char *str)
 {
@@ -15,33 +15,62 @@ size_t _strlen(const char *str)
 	return (length);
 }
 
-int _strncmp(const char *s1, const char *s2, size_t n)
+char *_strdup(const char *s)
 {
-	while (n--)
+	char *dup;
+	size_t len = 0, i = 0;
+	if (s == NULL)
 	{
-		if (*s1 != *s2 || *s1 == '\0' || *s2 == '\0')
-		{
-			return (unsigned char)*s1 - (unsigned char)*s2;
-		}
-		s1++;
-		s2++;
+		return (NULL);
 	}
-	return 0;
+
+	while (s[len] != '\0')
+	{
+		len++;
+	}
+
+	dup = (char *)malloc(len + 1);
+	if (dup == NULL) 
+    	{
+		return (NULL);
+	}
+
+	while (i <= len)
+	{
+        	dup[i] = s[i];
+		i++;
+	}
+	return dup;
+}
+
+int _strncmp(const char *str1, const char *str2, size_t n)
+{
+	while (n-- && *str1 && (*str1 == *str2))
+	{
+		str1++;
+		str2++;
+	}
+    return n == (size_t)-1 ? 0 : (*str1 - *str2);
 }
 
 char *_getenv(const char *name)
 {
-        int i = 0;
-        size_t len = _strlen(name);
+	extern char **environ;
+	int i = 0;
+	size_t len = _strlen(name);
 
-        while (environ[i])
+	if (name == NULL || len == 0)
 	{
-                if(_strncmp(environ[i], name, len) == 0 && environ[i][len] == '=')
-                {
-                        return (environ[i] + len + 1);
-                }
-                i++;
-        }
-        return (NULL);
+		return (NULL);
+	}
 
+	while (environ[i])
+	{
+		if (_strncmp(environ[i], name, len) == 0 && environ[i][len] == '=')
+		{
+			return (environ[i] + len + 1);
+		}
+        i++;
+	}
+	return NULL;
 }
