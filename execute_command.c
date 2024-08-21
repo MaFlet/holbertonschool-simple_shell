@@ -84,7 +84,17 @@ void execute_command(char *command)
 
 	command = _strtrim(command);	
 	tokenize_command(command, argv);
+	
+	if (argv[0] == NULL)
+	{
+		return;
+	}
 
+	if (_strncmp(argv[0], "env", 3) == 0 && argv[0][3] == '\0')
+	{
+		print_env();
+		return;
+	}
 	if (argv[0][0] != '/' && argv[0][0] != '.')
 	{
 		command_path = find_command_path(argv[0]);
