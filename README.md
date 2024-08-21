@@ -88,7 +88,7 @@ julien@ubuntu:/#
 
 ### :pushpin: Examples
 
-### :neckbeard: Authors
+### :crown: Authors
 
 * Mary Fletcher
 * Xi Qern Egan Leong
