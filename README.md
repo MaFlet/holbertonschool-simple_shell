@@ -4,13 +4,13 @@
 
 ### Requirement for the project
 
-### Compilation
+### Compilation :keyboard:
 
 `gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh`
 
 ### Usage
 
-### Installation
+### Installation :computer:
 
 ### Examples
 
