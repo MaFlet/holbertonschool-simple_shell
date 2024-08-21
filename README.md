@@ -16,8 +16,6 @@
 
 ### Authors
 
-Mary Fletcher
-
-Xi Qern Egan Leong
-
-Chutima Puthachon
+* Mary Fletcher
+* Xi Qern Egan Leong
+* Chutima Puthachon
