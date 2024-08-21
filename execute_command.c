@@ -64,6 +64,17 @@ void execute_command(char *command)
 }*/
 extern char **environ;
 
+void print_env(void)
+{
+	char **env = environ;
+
+	while (*env)
+	{
+		printf("%s\n", *env);
+		env++;
+	}
+}
+
 void execute_command(char *command)
 {
 	pid_t pid;
@@ -74,7 +85,7 @@ void execute_command(char *command)
 	command = _strtrim(command);	
 	tokenize_command(command, argv);
 
-	/*if (argv[0][0] != '/' && argv[0][0] != '.')
+	if (argv[0][0] != '/' && argv[0][0] != '.')
 	{
 		command_path = find_command_path(argv[0]);
 		if (command_path == NULL)
@@ -86,13 +97,6 @@ void execute_command(char *command)
 	else
 	{
 		command_path = argv[0];
-	}*/
-
-	command_path = find_command_path(argv[0]);
-	if (command_path == NULL)
-	{
-		fprintf(stderr, "Command not found: %s\n", argv[0]);
-		return;
 	}
 
 	if (access(command_path, X_OK) == 0)
