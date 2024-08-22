@@ -42,9 +42,8 @@ void execute_command(char *command)
 
 	if (argv[0] && _strncmp(_strtrim(argv[0]), "exit", 4) == 0 && argv[1] == NULL)
    	{
-		printf("Exiting with status: %d\n", status);
 		free(argv[0]);
-		exit(EXIT_SUCCESS);
+		exit(0);
 	}
 
 	if (_strncmp(argv[0], "env", 3) == 0 && argv[0][3] == '\0')
@@ -58,7 +57,6 @@ void execute_command(char *command)
 		if (command_path == NULL)
 		{
 			fprintf(stderr, "Command not found: %s\n", argv[0]);
-			status = 127;
 			return;
 		}
 	}
@@ -74,7 +72,6 @@ void execute_command(char *command)
 		if (pid < 0)
 		{
 			perror("fork failed");
-			status = 1;
 			free(command_path);
 			exit(EXIT_FAILURE);
 		}
@@ -83,14 +80,8 @@ void execute_command(char *command)
 			if (execve(command_path, argv, environ) == -1)
 			{
 				perror("Error with execve");
-				status = 126;
-				if (command_path != argv[0])
-                		{
-                    			free(command_path);
-                		}
-                		exit(status);  
-				/* free(command_path);*/
-				/* exit(EXIT_FAILURE);*/
+				free(command_path);
+				exit(EXIT_FAILURE);
 			}
 		}
 		else
@@ -98,19 +89,16 @@ void execute_command(char *command)
 			if (waitpid(pid, &status, 0) == -1)
 			{
 				perror("Waitpid failed");
-				status = 1;
 			}
 			if (WIFEXITED(status))
 			{
 				status = WEXITSTATUS(status);
-				printf("Exiting with status: %d\n", status);
 			}
 		}
 	}
 	else
 	{
 		fprintf(stderr, "Command not executable or does not exist: %s\n", command_path);
-		status = 126;
 	}
 
 	if (command_path != argv[0])
