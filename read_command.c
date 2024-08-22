@@ -42,17 +42,16 @@ char *read_command(int interactive)
                 }
         }
 
-        len = _strcspn(command_buffer, "\n");
-        command_buffer[len] = '\0';
-        command_buffer = _strtrim(command_buffer);
-        if (command_buffer == NULL || *command_buffer == '\0')
-        {
-                free(command_buffer);
-                return NULL;
-        }
-        {
-                command_buffer[input - 1] = '\0';
-        }
-        command_buffer = _strtrim(command_buffer);
-        return(command_buffer);
+	len = _strcspn(command_buffer, "\n");
+	command_buffer[len] = '\0';
+	command_buffer = _strtrim(command_buffer);
+	
+	if (command_buffer == NULL || *command_buffer == '\0')
+	{
+		free(command_buffer);
+		return NULL;
+	}
+	command_buffer = _strtrim(command_buffer);
+	return(command_buffer);
+
 }
