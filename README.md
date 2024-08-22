@@ -105,25 +105,30 @@ julien@ubuntu:/#
 
 1. Clone the repository to your local machine:
 
+```
 git clone https://github.com/MaFlet/holbertonschool-simple_shell.git
+```
 
 2. Navigate into the project directory:
-
+```
 cd holbertonschool-simple_shell
-
+```
 3. Compile the program:
-
+```
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+```
 
 
 ### :pushpin: Examples
 
-# Run the shell in interactive mode
+### Run the shell in interactive mode
+```
 ./hsh
-
-# Run the shell in non-interactive mode with a command
+```
+### Run the shell in non-interactive mode with a command
+```
 echo "/bin/ls" | ./hsh
-
+```
 ### :crown: Authors
 
 * Mary Fletcher
