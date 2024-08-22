@@ -3,7 +3,7 @@
 #include <string.h>
 
 /**
- * interactive_mode - deal with user input
+ * noninteractive_mode - deal with user input
  * Return: nothing
 */
 

@@ -12,8 +12,6 @@
  * Return: nothing
  **/
 
-extern char **environ;
-
 void print_env(void)
 {
 	char **env = environ;
@@ -32,7 +30,7 @@ void execute_command(char *command)
 	char *argv[64];
 	char *command_path;
 
-	command = _strtrim(command);	
+	command = _strtrim(command);
 	tokenize_command(command, argv);
 
 	if (command == NULL || *command == '\0')
@@ -46,7 +44,7 @@ void execute_command(char *command)
 	}
 
 	if (argv[0] && _strncmp(_strtrim(argv[0]), "exit", 4) == 0 && argv[1] == NULL)
-   	{
+	{
 		free(argv[0]);
 		exit(0);
 	}
@@ -72,7 +70,6 @@ void execute_command(char *command)
 
 	if (access(command_path, X_OK) == 0)
 	{
-	
 		pid = fork();
 		if (pid < 0)
 		{
