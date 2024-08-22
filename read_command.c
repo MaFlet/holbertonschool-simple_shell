@@ -4,52 +4,41 @@
 #include "shell.h"
 #include <stddef.h>
 
+/**
+ * read_command - Reads a command from standard input.
+ * @interactive: If non-zero, prompts the user with a shell prompt.
+ *
+ * Return: A pointer to the trimmed command string, or NULL if the input
+ *         is empty or only contains whitespace.
+ */
+
 char *read_command(int interactive)
 {
-	size_t bufsize = 0;
+	size_t bufsize = 0, len;
 	ssize_t input;
-	size_t len;
 
 	if (interactive)
-	{
 		printf("cisfun$ ");
-	}
 
 	input = getline(&command_buffer, &bufsize, stdin);
 	if (input == -1)
 	{
-		if (input == EOF)
-		{
-			if (interactive)
-			{
-				printf("\n");
-			}
-			free(command_buffer);
-                        command_buffer = NULL;
-			exit(EXIT_SUCCESS);
-		}
-		else
-		{
-			perror("getline failed...");
-			free(command_buffer);
-                        command_buffer = NULL;
-			exit(EXIT_FAILURE);
-		}	
+		if (input == EOF && interactive)
+			printf("\n");
+		free(command_buffer);
+		exit(input == EOF ? EXIT_SUCCESS : EXIT_FAILURE);
 	}
 
-	len = _strcspn(command_buffer, "\n");
-	command_buffer[len] = '\0';
+	command_buffer[_strcspn(command_buffer, "\n")] = '\0';
 	command_buffer = _strtrim(command_buffer);
+
 	if (command_buffer == NULL || *command_buffer == '\0')
 	{
 		free(command_buffer);
-		return NULL;
+		return (NULL);
 	}
-/*	if (input > 0 && command_buffer[input - 1] == '\n')
-	{
-		command_buffer[input - 1] = '\0';
-	}
-*/
+
+	command_buffer[input - 1] = '\0';
 	command_buffer = _strtrim(command_buffer);
-	return(command_buffer);
+	return (command_buffer);
 }
