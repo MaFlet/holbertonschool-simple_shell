@@ -125,7 +125,6 @@ julien@ubuntu:/#
 |------------------------|-----------------------------------------------------------------------------|
 | _getenv.c              | Contains the implementation for retrieving                                  |
 |                        | environment variables.                                                      |
-|-------------------------------------------------------------------------------------------------------
 | _memmove.c             | Implements a custom memory move function.                                    |
 | _strcspn.c             | Provides the implementation for a string span function,                      |
 |                        | which searches a string for the first occurrence of any                     |
