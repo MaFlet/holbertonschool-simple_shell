@@ -8,7 +8,7 @@
 */
 
 void noninteractive_mode(void)
-{	
+{
 	char *command;
 
 	while (1)
