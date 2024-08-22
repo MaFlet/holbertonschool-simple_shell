@@ -23,7 +23,7 @@ char *_strtrim(char *str)
 
 	end = str + _strlen(str) - 1;
 	while (end > str && (*end == ' ' || *end == '\t' || *end == '\n' ||
-	                     *end == '\r' || *end == '\v' || *end == '\f'))
+		*end == '\r' || *end == '\v' || *end == '\f'))
 		end--;
 
 

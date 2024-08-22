@@ -42,8 +42,9 @@ void execute_command(char *command)
 
 	if (argv[0] && _strncmp(_strtrim(argv[0]), "exit", 4) == 0 && argv[1] == NULL)
    	{
+		printf("Exiting with status: %d\n", status);
 		free(argv[0]);
-		exit(status);
+		exit(EXIT_SUCCESS);
 	}
 
 	if (_strncmp(argv[0], "env", 3) == 0 && argv[0][3] == '\0')
@@ -73,6 +74,7 @@ void execute_command(char *command)
 		if (pid < 0)
 		{
 			perror("fork failed");
+			status = 1;
 			free(command_path);
 			exit(EXIT_FAILURE);
 		}
@@ -81,8 +83,14 @@ void execute_command(char *command)
 			if (execve(command_path, argv, environ) == -1)
 			{
 				perror("Error with execve");
-				free(command_path);
-				exit(EXIT_FAILURE);
+				status = 126;
+				if (command_path != argv[0])
+                		{
+                    			free(command_path);
+                		}
+                		exit(status);  
+				/* free(command_path);*/
+				/* exit(EXIT_FAILURE);*/
 			}
 		}
 		else
@@ -90,10 +98,12 @@ void execute_command(char *command)
 			if (waitpid(pid, &status, 0) == -1)
 			{
 				perror("Waitpid failed");
+				status = 1;
 			}
 			if (WIFEXITED(status))
 			{
 				status = WEXITSTATUS(status);
+				printf("Exiting with status: %d\n", status);
 			}
 		}
 	}

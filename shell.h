@@ -9,12 +9,9 @@
 #include <string.h>
 #include <signal.h>
 #include <stddef.h>
-extern char *command_buffer;
 
-/*typedef struct name
-{
-	code here
-} struct_name; */
+extern char *command_buffer;
+extern char **environ;
 
 /* simple shell prototypes */
 char *read_command(int interactive);
