@@ -34,6 +34,8 @@ void sigint_handler(int sig)
 }*/
 int main(void)
 {
+	char *command;
+
 	signal(SIGINT, sigint_handler);
 
 	if (isatty(STDIN_FILENO))
@@ -42,7 +44,16 @@ int main(void)
 	}
 	else
 	{
-		noninteractive_mode();
+		command = read_command(0);
+		if (command && *command == '\0')
+		{
+			noninteractive_mode();
+		}
+		else
+		{
+			free(command);
+			noninteractive_mode();
+		}
 	}
 	clean_up();
 
