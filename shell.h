@@ -22,7 +22,7 @@ char *find_command_path(const char *command);
 void tokenize_command(char *command, char **argv);
 
 /* main.c protypes */
-void clean_up();
+void clean_up(void);
 void sigint_handler(int sig);
 
 /* helper prototypes */
