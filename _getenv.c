@@ -4,9 +4,14 @@
 #include <stdlib.h>
 #include "shell.h"
 
+/**
+* _getenv - get environment variables
+* @name: name of env variable
+* Return: environ or NULL
+*/
+
 char *_getenv(const char *name)
 {
-	extern char **environ;
 	int i = 0;
 	size_t len = _strlen(name);
 
@@ -21,7 +26,7 @@ char *_getenv(const char *name)
 		{
 			return (environ[i] + len + 1);
 		}
-        i++;
+		i++;
 	}
-	return NULL;
+	return (NULL);
 }
