@@ -91,22 +91,38 @@ julien@ubuntu:/#
 ```
 
 ### :open_file_folder: File description
-	1.	_getenv.c: Contains the implementation for retrieving environment variables.
-	2.	_memmove.c: Implements a custom memory move function.
-	3.	_strcspn.c: Provides the implementation for a string span function, which searches a string for the first occurrence of any character from a specified set.
-	4.	_strcmp.c: Implements string comparison functionality.
-	5.	_strdup.c: Provides an implementation for duplicating strings.
-	6.	_strlen.c: Contains the implementation for calculating the length of a string.
-	7.	_strncmp.c: Implements a function to compare a specified number of characters between two strings.
-	8.	_strtrim.c: Provides a function for trimming leading and trailing whitespace from a string.
-	9.	execute_command.c: Handles the execution of commands, including process creation and management.
-	10.	find_path.c: Implements functionality for locating the correct path of executable files based on the PATH environment variable.
-	11.	interactive_mode.c: Manages the shell behavior in interactive mode, where it reads and executes user commands in real-time.
-	12.	main.c: The entry point of the shell program.
-	13.	noninteractive_mode.c: Handles the shell behavior in non-interactive mode, such as when commands are piped or redirected to the shell.
-	14.	read_command.c: Contains the implementation for reading user input and preparing it for execution.
-	15.	tokenize_command.c: Implements the functionality for parsing and tokenizing commands into their constituent parts.
-	16.	shell.h: The header file containing function prototypes, macro definitions, and global variables used across the shell program.
+
+| File                   | Description                                                                 |
+|------------------------|-----------------------------------------------------------------------------|
+| _getenv.c              | Contains the implementation for retrieving                                  |
+|                        | environment variables.                                                      |
+| _memmove.c             | Implements a custom memory move function.                                    |
+| _strcspn.c             | Provides the implementation for a string span function,                      |
+|                        | which searches a string for the first occurrence of any                     |
+|                        | character from a specified set.                                             |
+| _strcmp.c              | Implements string comparison functionality.                                  |
+| _strdup.c              | Provides an implementation for duplicating strings.                          |
+| _strlen.c              | Contains the implementation for calculating the length                      |
+|                        | of a string.                                                                |
+| _strncmp.c             | Implements a function to compare a specified number                         |
+|                        | of characters between two strings.                                          |
+| _strtrim.c             | Provides a function for trimming leading and trailing                       |
+|                        | whitespace from a string.                                                   |
+| execute_command.c      | Handles the execution of commands, including process                        |
+|                        | creation and management.                                                    |
+| find_path.c            | Implements functionality for locating the correct path                      |
+|                        | of executable files based on the `PATH` environment variable.               |
+| interactive_mode.c     | Manages the shell behavior in interactive mode,                             |
+|                        | where it reads and executes user commands in real-time.                     |
+| main.c                 | The entry point of the shell program.                                        |
+| noninteractive_mode.c  | Handles the shell behavior in non-interactive mode,                          |
+|                        | such as when commands are piped or redirected to the shell.                 |
+| read_command.c         | Contains the implementation for reading user input                          |
+|                        | and preparing it for execution.                                             |
+| tokenize_command.c     | Implements the functionality for parsing and tokenizing                     |
+|                        | commands into their constituent parts.                                      |
+| shell.h                | The header file containing function prototypes, macro                       |
+|                        | definitions, and global variables used across the shell program.            |
 
 ### :computer: Installation
 
