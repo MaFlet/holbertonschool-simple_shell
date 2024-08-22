@@ -8,7 +8,7 @@ void *_memmove(void *dest, const void *src, size_t n)
 
 	if (d == s)
 	{
-		return dest;
+		return (dest);
 	}
 
 	if (d < s)
@@ -27,5 +27,5 @@ void *_memmove(void *dest, const void *src, size_t n)
 			*(--d) = *(--s);
 		}
 	}
-	return dest;
+	return (dest);
 }
