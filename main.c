@@ -34,7 +34,6 @@ void sigint_handler(int sig)
 }*/
 int main(void)
 {
-	char *command;
 
 	signal(SIGINT, sigint_handler);
 
@@ -44,16 +43,7 @@ int main(void)
 	}
 	else
 	{
-		command = read_command(0);
-		if (command && *command == '\0')
-		{
-			noninteractive_mode();
-		}
-		else
-		{
-			free(command);
-			noninteractive_mode();
-		}
+		noninteractive_mode();
 	}
 	clean_up();
 
