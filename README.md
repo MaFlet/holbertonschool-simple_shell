@@ -54,10 +54,6 @@ wait4 (man 2 wait4)
 write (man 2 write)
 ```
 
-### :keyboard: Compilation 
-
-```gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh```
-
 ### :black_square_button: Usage
 
 ### :eyeglasses: Testing
