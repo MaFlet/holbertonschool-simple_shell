@@ -1,6 +1,12 @@
 #include "shell.h"
 #include <string.h>
 
+/**
+ * tokenize_command - function that tokenize a string
+ * @command: pointer to the command
+ * @argv: array of arguments
+ */
+
 void tokenize_command(char *command, char **argv)
 {
 	int i = 0;
