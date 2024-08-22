@@ -14,31 +14,45 @@
 
 char *read_command(int interactive)
 {
-	size_t bufsize = 0, len;
-	ssize_t input;
+        size_t bufsize = 0, len;
+        ssize_t input;
 
-	if (interactive)
-		printf("cisfun$ ");
+        if (interactive)
+                printf("cisfun$ ");
 
-	input = getline(&command_buffer, &bufsize, stdin);
-	if (input == -1)
-	{
-		if (input == EOF && interactive)
-			printf("\n");
-		free(command_buffer);
-		exit(input == EOF ? EXIT_SUCCESS : EXIT_FAILURE);
-	}
+        input = getline(&command_buffer, &bufsize, stdin);
+        if (input == -1)
+        {
+                if (input == EOF)
+                {
+                        if (interactive)
+                        {
+                                printf("\n");
+                        }
+                        free(command_buffer);
+                        command_buffer = NULL;
+                        exit(EXIT_SUCCESS);
+                }
+                else
+                {
+                        perror("getline failed...");
+                        free(command_buffer);
+                        command_buffer = NULL;
+                        exit(EXIT_FAILURE);
+                }
+        }
 
-	command_buffer[_strcspn(command_buffer, "\n")] = '\0';
-	command_buffer = _strtrim(command_buffer);
-
-	if (command_buffer == NULL || *command_buffer == '\0')
-	{
-		free(command_buffer);
-		return (NULL);
-	}
-
-	command_buffer[input - 1] = '\0';
-	command_buffer = _strtrim(command_buffer);
-	return (command_buffer);
+        len = _strcspn(command_buffer, "\n");
+        command_buffer[len] = '\0';
+        command_buffer = _strtrim(command_buffer);
+        if (command_buffer == NULL || *command_buffer == '\0')
+        {
+                free(command_buffer);
+                return NULL;
+        }
+        {
+                command_buffer[input - 1] = '\0';
+        }
+        command_buffer = _strtrim(command_buffer);
+        return(command_buffer);
 }
