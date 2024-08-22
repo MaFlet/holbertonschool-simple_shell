@@ -63,6 +63,9 @@ write (man 2 write)
 * printenv	print the environment variables
 * exit	terminate the program
 ```
+### Examples
+```
+```
 
 ### :eyeglasses: Testing
 Your shell should work like this in interactive mode:
@@ -121,9 +124,10 @@ cd holbertonschool-simple_shell
 ```
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
+### License
 
-
-### :pushpin: Examples
+```
+```
 
 ### Run the shell in interactive mode
 ```
@@ -133,6 +137,7 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
 echo "/bin/ls" | ./hsh
 ```
+
 ### :crown: Authors
 
 * Mary Fletcher
