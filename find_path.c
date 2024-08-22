@@ -6,7 +6,12 @@
 #include "shell.h"
 
 extern char **environ;
-
+/**
+*find_command_path - search for a command to execute
+*throughout PATH for the user to see in STDOUT
+*@command: command to execute and search for
+*Return: right command or NULL if otherwise
+*/
 char *find_command_path(const char *command)
 {
 	char *path, *dir, *full_path;
