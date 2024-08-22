@@ -53,8 +53,6 @@ void execute_command(char *command)
 
 	if (_strncmp(argv[0], "env", 3) == 0 && argv[0][3] == '\0')
 	{
-		free(command);
-                free(argv[0]);
 		print_env();
 		return;
 	}
