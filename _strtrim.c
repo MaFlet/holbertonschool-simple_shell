@@ -10,27 +10,6 @@
  * Return: A pointer to the trimmed string
  */
 
-/*char *_strtrim(char *str)
-{
-	char *end;
-
-	while (*str == ' ' || *str == '\t' || *str == '\n' ||
-	       *str == '\r' || *str == '\v' || *str == '\f')
-		str++;
-
-	if (*str == 0)
-		return (str);
-
-	end = str + _strlen(str) - 1;
-	while (end > str && (*end == ' ' || *end == '\t' || *end == '\n' ||
-		*end == '\r' || *end == '\v' || *end == '\f'))
-		end--;
-
-
-	*(end + 1) = '\0';
-	_memmove(str, str, end - str + 2);
-	return (str);
-}*/
 char *_strtrim(char *str)
 {
 	char *start = str;
@@ -45,7 +24,7 @@ char *_strtrim(char *str)
 	if (*start == 0)
 	{
 		*str = '\0';
-		return str;
+		return (str);
 	}
 
 	end = start + _strlen(start) - 1;
@@ -62,4 +41,3 @@ char *_strtrim(char *str)
 	}
 	return (str);
 }
-
