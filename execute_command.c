@@ -41,13 +41,12 @@ void execute_command(char *command)
 		print_env();
 		return;
 	}
+
+	clear_environment();
+
 	if (argv[0][0] != '/' && argv[0][0] != '.')
 	{
 		command_path = find_command_path(argv[0]);
-		/*if (getenv("PATH") && strlen(getenv("PATH")) > 0)
-		{
-			command_path = find_command_path(argv[0]);
-		}*/
 		if (command_path == NULL)
 		{
 			fprintf(stderr, "Command not found: %s\n", argv[0]);
