@@ -17,14 +17,19 @@ void execute_command(char *command)
 	int status = 0;
 	char *argv[64];
 	char *command_path;
+	int i;
 
 	command = _strtrim(command);
-	tokenize_command(command, argv);
+	/*tokenize_command(command, argv);*/
 
 	if (command == NULL || *command == '\0')
 	{
 		return;
 	}
+
+	for (i = 0; i < 4; i++)
+	{
+        tokenize_command(command, argv);
 
 	if (argv[0] == NULL)
 	{
@@ -97,5 +102,6 @@ void execute_command(char *command)
 	if (command_path != argv[0])
 	{
 		free(command_path);
+	}
 	}
 }
