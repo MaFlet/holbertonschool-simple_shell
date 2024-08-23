@@ -55,15 +55,23 @@ write (man 2 write)
 ```
 
 ### :black_square_button: Usage
-
+To use the custom simple_shell program, include the main.h header file in your project and compile all the associated source files. Once compiled, run the executable ./hsh to start the shell. You can use it just like a standard shell, including running commands with arguments, such as ls -la.
 ```
 * ls	list files in current directory
 * pwd   print working directory
 * env	print the environment variables
 * printenv	print the environment variables
 * exit	terminate the program
+* echo allows users to display lines of text or strings that are passed as arguments
 ```
-### Examples
+
+### :fax: Man Page
+```
+man ./man_1_simple_shell
+```
+
+### :mag: Examples
+`cisfun$` is our prompt. Below are examples of how to use commands with our simple shell.
 ```
 cisfun$ ls  
 AUTHORS    _memmove.c  _strdup.c   _strtrim.c	      hsh		  man_1_simple_shell	 shell
@@ -119,6 +127,15 @@ hsh main.c shell.c test_ls_2
 julien@ubuntu:/#
 ```
 
+### :round_pushpin: Terminate the shell
+Type the commands below to exit the shell
+
+```
+exit
+```
+```
+ctrl + c / ctrl + z
+```
 ### :open_file_folder: File description
 
 | File                   | Description                                                                 |
@@ -169,22 +186,13 @@ cd holbertonschool-simple_shell
 ```
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
-### :desktop_computer: License
-
-```
-```
-
-### Run the shell in interactive mode
+4. Run the shell with:
 ```
 ./hsh
 ```
-### Run the shell in non-interactive mode with a command
-```
-echo "/bin/ls" | ./hsh
-```
 
 ### :crown: Authors
-
+Holberton, Cohort 24 (Melbourne)
 * Mary Fletcher
 * Xi Qern Egan Leong
 * Chutima Puthachon
