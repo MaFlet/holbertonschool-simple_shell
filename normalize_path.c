@@ -11,7 +11,6 @@ char *normalize_path(const char *path)
     char *normalized_path;
     char *ptr;
     char *token;
-    char *path_copy;
 
     if (realpath(path, resolved_path) == NULL)
     {
