@@ -11,18 +11,6 @@
  * command: take char 'command' as parameter
  * Return: nothing
  **/
-
-void print_env(void)
-{
-	char **env = environ;
-
-	while (*env)
-	{
-		printf("%s\n", *env);
-		env++;
-	}
-}
-
 void execute_command(char *command)
 {
 	pid_t pid;
@@ -57,6 +45,10 @@ void execute_command(char *command)
 	if (argv[0][0] != '/' && argv[0][0] != '.')
 	{
 		command_path = find_command_path(argv[0]);
+		if (getenv("PATH") && strlen(getenv("PATH")) > 0)
+		{
+			command_path = find_command_path(argv[0]);
+		}
 		if (command_path == NULL)
 		{
 			fprintf(stderr, "Command not found: %s\n", argv[0]);
