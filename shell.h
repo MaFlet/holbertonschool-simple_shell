@@ -26,6 +26,7 @@ void clean_up(void);
 void sigint_handler(int sig);
 
 /* helper prototypes */
+char *normalize_path(const char *path);
 void clear_environment(void);
 char *_strdup(const char *s);
 size_t _strlen(const char *str);
