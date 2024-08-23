@@ -17,7 +17,6 @@ void execute_command(char *command)
 	int status = 0;
 	char *argv[64];
 	char *command_path;
-	int i;
 
 	command = _strtrim(command);
 	tokenize_command(command, argv);
@@ -65,7 +64,10 @@ void execute_command(char *command)
 		if (pid < 0)
 		{
 			perror("fork failed");
-			free(command_path);
+			if (command_path != argv[0])
+			{
+				free(command_path);
+			}
 			exit(EXIT_FAILURE);
 		}
 		if (pid == 0)
@@ -73,7 +75,10 @@ void execute_command(char *command)
 			if (execve(command_path, argv, environ) == -1)
 			{
 				perror("Error with execve");
-				free(command_path);
+				if (command_path != argv[0])
+				{
+					free(command_path);
+				}
 				exit(EXIT_FAILURE);
 			}
 		}
