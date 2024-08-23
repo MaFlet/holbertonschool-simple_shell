@@ -42,8 +42,6 @@ void execute_command(char *command)
 		return;
 	}
 
-	/*clear_environment();*/
-
 	if (argv[0][0] != '/' && argv[0][0] != '.')
 	{
 		command_path = find_command_path(argv[0]);
