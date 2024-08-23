@@ -57,6 +57,12 @@ void execute_command(char *command)
 	{
 		command_path = argv[0];
 	}
+	 command_path = normalize_path(argv[0]);
+	
+	if (command_path == NULL)
+	{
+		return;
+	}
 
 	if (access(command_path, X_OK) == 0)
 	{
