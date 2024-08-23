@@ -42,7 +42,7 @@ void execute_command(char *command)
 		return;
 	}
 
-	clear_environment();
+	/*clear_environment();*/
 
 	if (argv[0][0] != '/' && argv[0][0] != '.')
 	{
