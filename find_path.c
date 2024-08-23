@@ -4,9 +4,11 @@
 #include <unistd.h>
 #include <sys/stat.h>
 #include "shell.h"
-
-extern char **environ;
-
+/**
+ * find_command_path - Finds the full path of a command
+ * @command: The command to find
+ * Return: The full path of the command or NULL if not found
+ */
 char *find_command_path(const char *command)
 {
 	char *path, *dir, *full_path;
@@ -14,17 +16,13 @@ char *find_command_path(const char *command)
 	size_t len;
 
 	if (command[0] == '/' || command[0] == '.')
-	{
 		if (stat(command, &st) == 0 && (st.st_mode & S_IXUSR))
-			return _strdup(command);
+			return (_strdup(command));
 		else
-                        return (NULL);
-	}
+			return (NULL);
 	path = _getenv("PATH");
 	if (!path)
-	{
 		return (NULL);
-	}
 	path = _strdup(path);
 	if (!path)
 	{
@@ -45,7 +43,7 @@ char *find_command_path(const char *command)
 		if (stat(full_path, &st) == 0 && (st.st_mode & S_IXUSR))
 		{
 			free(path);
-			return full_path;
+			return (full_path);
 		}
 		free(full_path);
 		dir = strtok(NULL, ":");
