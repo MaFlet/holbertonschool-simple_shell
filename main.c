@@ -4,10 +4,12 @@
 #include <string.h>
 #include <signal.h>
 #include "shell.h"
-
-char *command_buffer = NULL;
-
-void clean_up()
+static char *command_buffer;
+/**
+ * clean_up - Frees allocated memory and resets the buffer pointer.
+ * Return: nothing
+ */
+void clean_up(void)
 {
 	if (command_buffer)
 	{
@@ -15,7 +17,11 @@ void clean_up()
 		command_buffer = NULL;
 	}
 }
-
+/**
+ * sigint_handler - Handles SIGINT signal.
+ * @sig: The signal number (not used in this handler).
+ * Return: nothing
+ */
 void sigint_handler(int sig)
 {
 	(void)sig;
@@ -23,29 +29,18 @@ void sigint_handler(int sig)
 	clean_up();
 	exit(0);
 }
-
-/* Signal handler for SIGINT */
-
-/*void handle_sigint(int sig)
-{
-    printf("\nCaught signal %d. Type 'exit' to quit the shell.\n", sig);
-    printf("cisfun$ ");
-    fflush(stdout);      
-}*/
+/**
+ * main - Entry point of the shell programme
+ * Return: Always returns 0.
+ **/
 int main(void)
 {
-
 	signal(SIGINT, sigint_handler);
 
 	if (isatty(STDIN_FILENO))
-	{
 		interactive_mode();
-	}
 	else
-	{
 		noninteractive_mode();
-	}
 	clean_up();
-
 	return (0);
 }
