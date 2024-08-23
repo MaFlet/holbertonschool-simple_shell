@@ -33,6 +33,6 @@ char *_getenv(const char *name);
 char *_strtrim(char *str);
 size_t _strcspn(const char *s, const char *reject);
 void *_memmove(void *dest, const void *src, size_t n);
-/*void handle_sigint(int sig);*/
+void print_env(void);
 
 #endif /* SHELL */
