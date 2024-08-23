@@ -1,38 +1,53 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
+#include "shell.h"
 
 #define MAX_PATH 1024
 
 char *normalize_path(const char *path)
 {
-    char resolved_path[MAX_PATH];
-    char *normalized_path;
-    char *ptr;
+    char *normalized_path = malloc(MAX_PATH);
     char *token;
+    char *path_copy = strdup(path);
+    char *components[MAX_PATH];
+    int top = -1, i;
 
-    if (realpath(path, resolved_path) == NULL)
+    if (!normalized_path || !path_copy)
     {
-        perror("Error resolving path");
+        perror("Error allocating memory");
+        free(normalized_path);
+        free(path_copy);
         return NULL;
     }
-    normalized_path = strdup(resolved_path);
-    if (normalized_path == NULL)
+    token = strtok(path_copy, "/");
+    while (token != NULL)
     {
-        perror("Error duplicating path");
-        return NULL;
-    }
-    ptr = normalized_path;
-    while ((token = strtok(ptr, "/")) != NULL)
-    {
-        if (strcmp(token, ".") != 0 && strcmp(token, "..") != 0)
+        if (strcmp(token, "..") == 0)
         {
-            strcat(ptr, "/");
-            strcat(ptr, token);
+            if (top >= 0)
+                top--;
         }
-        ptr += strlen(token) + 1;
+        else if (_strcmp(token, ".") != 0 && _strcmp(token, "") != 0)
+        {
+            components[++top] = token;
+        }
+        token = strtok(NULL, "/");
     }
 
-    return normalized_path;
+    normalized_path[0] = '\0';
+    for (i = 0; i <= top; i++)
+    {
+        _strcat(normalized_path, "/");
+        _strcat(normalized_path, components[i]);
+    }
+
+    if (top == -1)
+    {
+        _strcpy(normalized_path, "/");
+    }
+
+    free(path_copy);
+    return (normalized_path);
 }
+
