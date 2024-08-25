@@ -80,6 +80,45 @@ to excute without the user's interuption.
 
 Creating child process (Fork System)(refer to man 2 fork -  https://man7.org/linux/man-pages/man2/fork.2.html)
 
-   The process starts when the user typed in a command like "/bin/ls" to list directories. Then, it creates
-a new process (child process) duplicated from the parent process (calling process). 
+   The process starts when the user typed in a command like "/bin/ls" to list directories. Within, the shell
+operating system, the parent process invokes a fork system call that split into children processes. Every child
+process has its own unique number indicating a job or instructive process that is duplicate from the parent. "Access"
+command is used to make sure the fork calling program has acccess to specific files in the system. "execve" command
+checkes execuatble files to execute in the system's PATH environmental variable. The system wait is when the
+parent awaits for its children to obtain the state of changes and obtain information before they terminate and then
+the parent can finally execute. Example down below is a function to create child processes. 
 
+- Example:
+
+void execute_with_fork(char *command_path, char *argv[])
+{
+	pid_t pid; /*Initialising signed integer to represent a process ID*/
+	int status; /*status of created child process*/
+
+	if (access(command_path, X_OK) == 0) /*access command_path whehter its executable*/
+	{
+		pid = fork(); /*parent process invoking fork*/
+		if (pid < 0) /*If fork failed*/
+		{
+			perror("fork failed"); /*it wil print error*/
+			exit(EXIT_FAILURE); /*program will exit with failure status*/
+		}
+		if (pid == 0) /*if fork() returns to 0, its in child process*/
+		{
+			if (execve(command_path, argv, environ) == -1) /*child process will execute with execve replacing currrent
+                                                                        executeble file with a new one specifed from command_path file*/
+			{
+				perror("Error with execve"); /*Returns -1 if fails and prints error*/
+				exit(EXIT_FAILURE); /*exit child process with failure status*/
+			}
+		}
+		else
+			waitpid(pid, &status, 0); /*parent process have to wait for child's termination process*/
+	}
+	else
+		fprintf(stderr, "Command does not exist: %s\n", command_path); /*if command is not executable, error message is printed*/
+}  
+
+Parsing the command
+
+  Once the user types their commnad input, it will be split into to
