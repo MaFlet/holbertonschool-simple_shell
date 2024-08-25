@@ -73,8 +73,5 @@ with 'exit' it will terminate the program.
 it does not interact with the user. However, it is CRITICAL to include the
 non-interactive function for your simple shell. It also  handles the PATH environmental
 variable (refer PATH variable on how to set and handle section), where its continually
-look for executable commands in the background.
-
-. So why include a non-interactive shell? When the shell is in interactive mode it
-reads files that cointrols and display a prompt (cisfun$) for the user to type a
-command (/bin/ls). 
+look for executable commands in the background. It make sure to find the right commands
+to excute without the user's interuption.  
