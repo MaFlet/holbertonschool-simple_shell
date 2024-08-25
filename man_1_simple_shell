@@ -74,10 +74,12 @@ it does not interact with the user. However, it is CRITICAL to include the
 non-interactive function for your simple shell. It also  handles the PATH environmental
 variable (refer PATH variable on how to set and handle section), where its continually
 look for executable commands in the background. It make sure to find the right commands
-to excute without the user's interuption. 
+to excute without the user's interuption.
 
-. Building process for basic funcitonality of a simple shell
+.Building processes for the basic functionality of a simple shell
 
-Creating child process (Fork system)
+Creating child process (Fork System)(refer to man 2 fork -  https://man7.org/linux/man-pages/man2/fork.2.html)
 
-  
+   The process starts when the user typed in a command like "/bin/ls" to list directories. Then, it creates
+a new process (child process) duplicated from the parent process (calling process). 
+
