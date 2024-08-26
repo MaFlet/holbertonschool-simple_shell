@@ -170,4 +170,57 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin /*This indicat
 _=/usr/bin/printenv
 OLDPWD=/
 
-  Setting the PATH environment variable is 
+  Once tokenize, the program will go through listed directories in the PATH. Take it the /ls command has been tokenize, the program will search
+throughout the PATH that corresponds to /ls. Once executed it  results in listing the directories on stdout for the user to see. Below is the
+example of function to find full path of given command throughtout listed directories of PATH:
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/stat.h>
+#include "shell.h"
+
+char *find_command_path(const char *command)
+{
+	char *path, *dir, *full_path;
+	struct stat st;/*Define full information of file and defined to store information about file*/
+	size_t len;/*Size type to specify size and lenght of string or command*/
+
+	if (command[0] == '/' || command[0] == '.')/*Determines whether command starts with '/', indicating absolute path or '.', indicating
+	{                                            relative path*/
+		if (stat(command, &st) == 0 && (st.st_mode & S_IXUSR))/*Returns to duplicated string (as _strdup() call function), if file
+			return (_strdup(command));                     is executable*/
+		else
+			return (NULL);
+	}
+	path = _getenv("PATH");/*Function to fetch PATH environment variable "PATH"*/
+	if (!path)/*If PATH is not found return to NULL*/
+		return (NULL);
+	path = _strdup(path);/*PATH is duplicated from the original environment variable*/
+	if (!path)
+	{
+		perror("strdup failed");
+		exit(EXIT_FAILURE);
+	}
+	dir = strtok(path, ":");
+	while (dir)
+	{
+		len = _strlen(dir) + strlen(command) + 2;
+		full_path = malloc(len);
+		if (!full_path)
+		{
+			perror("malloc failed"), exit(EXIT_FAILURE);
+		}
+		sprintf(full_path, "%s/%s", dir, command);
+		if (stat(full_path, &st) == 0 && (st.st_mode & S_IXUSR))
+		{
+			free(path);
+			return (full_path);
+		}
+		free(full_path);
+		dir = strtok(NULL, ":");
+	}
+	free(path);
+	return (NULL);
+} 
