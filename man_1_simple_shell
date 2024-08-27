@@ -198,29 +198,47 @@ char *find_command_path(const char *command)
 	if (!path)/*If PATH is not found return to NULL*/
 		return (NULL);
 	path = _strdup(path);/*PATH is duplicated from the original environment variable*/
-	if (!path)
+	if (!path)/*If PATH cannot be duplicated..*/
 	{
-		perror("strdup failed");
+		perror("strdup failed");/*Print failed duplication and exit failure*/
 		exit(EXIT_FAILURE);
 	}
-	dir = strtok(path, ":");
-	while (dir)
+	dir = strtok(path, ":");/*Searching excutable files in colon-separated ":" directories, then proceed tokenizing*/
+	while (dir)/*While loop to find executable files in the directory*/
 	{
-		len = _strlen(dir) + strlen(command) + 2;
-		full_path = malloc(len);
-		if (!full_path)
+		len = _strlen(dir) + strlen(command) + 2;/*Calcualting length of string command for memory allocation*/
+		full_path = malloc(len);/*Allocating full path commands*/
+		if (!full_path)/*If full path is not allocated, print error and exit failure*/
 		{
 			perror("malloc failed"), exit(EXIT_FAILURE);
 		}
-		sprintf(full_path, "%s/%s", dir, command);
-		if (stat(full_path, &st) == 0 && (st.st_mode & S_IXUSR))
+		sprintf(full_path, "%s/%s", dir, command);/*sprint() function to store full_path*/
+		if (stat(full_path, &st) == 0 && (st.st_mode & S_IXUSR))/*Checking status of executable commands*/
 		{
-			free(path);
+			free(path);/*Free memory duplicated PATH*/
 			return (full_path);
 		}
-		free(full_path);
+		free(full_path);/*Free memory of full_path to avoid memory leaks*/
 		dir = strtok(NULL, ":");
 	}
 	free(path);
 	return (NULL);
 } 
+
+Helper functions:
+
+    Every C files for this project have repetitive functions to perform common tasks like tokenizing, duplicating,
+calculating string lengths, etc. Helper functions keep everything organized without adding all functions in one
+big C file. It also assist the main C files (for example, find_path.c) to perform specific tasks. Below are the
+helper function files for this project:
+
+. _getenv.c = (Syntax: char *_getenv(const char *name)), getenv() function is used to get environment variables
+with *name as representing the name of the variable. 
+
+. _memmove.c = (Syntax: void *_memmove(void *dest, const void *src, size_t n)), it is important to implement
+memmove() function in this project as it handles memory overlapping between the *src and *dest preventing it
+for corrrupting the process. 
+
+. _strcmp.c = (Syntax: int _strcmp(const char *s1, const char *s2)), strcmp() function compares between 2
+strings. This is helpful when comparing between environment variables as the program requires to choose the
+right variable to execute.   
