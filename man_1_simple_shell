@@ -241,4 +241,35 @@ for corrrupting the process.
 
 . _strcmp.c = (Syntax: int _strcmp(const char *s1, const char *s2)), strcmp() function compares between 2
 strings. This is helpful when comparing between environment variables as the program requires to choose the
-right variable to execute.   
+right variable to execute.
+
+. _strcspn.c = (Syntax: size_t _strcspn(const char *s, const char *reject)), strcspn() work with tokenize string
+segments. *s is th string that is scanned along the string *reject. The function calculates the length of *s and
+determine whether there are characters that matches string *reject. The function returns to the index value 
+of initial tokenize string of *s that is not found in *reject and length of *s if otherwise. This is a helpful
+function, as it validates tokenize string, removing unwanted string characters.
+
+. _strdup.c = (Syntax: char *_strdup(const char *s)), strdup() function is used to duplicate strings and then
+allocate memory for the new duplicated string that has the same content of the original string. Since PATH
+environment variables requires duplication, strdup is used for this. 
+
+PLEASE NOTE: Since strdup() and Fork() relatively perfom duplicative processes, they entirely perform
+independent and different processes. strdup() allow strings to be duplicated and both strings have the same
+content. It allocate new strings in heap memory in blocks and copied strings will not affect the original
+strings in the process. Creating child processes, is an independent process regarding execution and have
+separate process ID's from the parent (calling) process. Child process is like a replica from the parent
+process, once it terminates the operating system clean out its content and file descriptors.
+
+. _strlen.c = (Syntax: size_t _strlen(const char *str)), strlen() function calulates entire string length
+and returns the length with a size_t value. 
+
+. _strncmp.c = (Syntax: int _strncmp(const chat *str1, const char *str2, size_t n)), strncmp() function
+compare between 2 strings *str1 and *str2 up to 'n' characters. As size_t 'n' is the maximum number
+of characters to compare. 
+
+PLEASE NOTE: There is difference between strcmp and strncmp. As strcmp() function compare entire string
+between *s1 and *s2 and returns an integer based on the comparison between 2 strings. Whilst, strncmp()
+have 'n' representing as the maximum number of characters to compare between 2 strings. Therefore, it
+is only specific number of characters can be compared. 
+
+. _strtrim.c = (char *_strtrim(char *str)), strtrim() function      
