@@ -1,14 +1,15 @@
-man_1_simple_shell  "August 2024" Cohort_2024, Holberton School
+man_1_simple_shell  "August 2024" Cohort_2024, Holberton School, 
 Project C: Building our own simple shell
 
-Name:
-. Simple Shell (C Shell), - Operating command system,
-UNIX command line interpreter.
+NAME:
 
-Description:
-. A Shell - acts like a commmand interpreter. The user inputs a
-command after a prompt with a symbol like "$" that executes commands
-to view set of files and directory within the operating system. It
+@Simple Shell (C Shell), - Operating System, UNIX command line interpreter.
+
+DESCRIPTION:
+
+@Shell is an UNIX Operating System that takes in command inputs from the user.
+The user inputs a command after a prompt after a symbol like "$", it executes
+commands to view set of files and directory within the operating system. It
 is an interface of the operating system where control process when
 created and searching different files and directories.
 
@@ -272,4 +273,10 @@ between *s1 and *s2 and returns an integer based on the comparison between 2 str
 have 'n' representing as the maximum number of characters to compare between 2 strings. Therefore, it
 is only specific number of characters can be compared. 
 
-. _strtrim.c = (char *_strtrim(char *str)), strtrim() function      
+. _strtrim.c = (char *_strtrim(char *str)), as we tokenize string commands it can lead to trailing
+whitespaces and that needs to be dealt with. strtrim() function allows *str pointer to lead and point
+to the initial string (non-whitespace) character. The function will return to str, that points to the
+trimmed string.
+
+.AUTHORS
+.Chutima Puthachon, Xi Qern Egan Leong, Mary Ruth G. Fletcher      
