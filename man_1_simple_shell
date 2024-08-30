@@ -284,25 +284,30 @@ char *find_command_path(const char *command)
 
 HELPER FUNCTIONS
 
-    Every C files for this project have repetitive functions to perform common tasks like tokenizing, duplicating,
-calculating string lengths, etc. Helper functions keep everything organized without adding all functions in one
-big C file. It also assist the main C files (for example, find_path.c) to perform specific tasks. Below are the
-helper function files for this project:
+@Every C files for this project have repetitive functions to perform common
+tasks like tokenizing, duplicating, calculating string lengths, etc. Helper
+functions keep everything organized without adding all functions in one big C
+file. It also assist the main C files (for example, find_path.c) to perform
+specific tasks. Below are the helper function files for this project:
 
-. _getenv.c = (Syntax: char *_getenv(const char *name)), getenv() function is used to get environment variables
-with *name as representing the name of the variable. 
+._getenv.c = (Syntax: char *_getenv(const char *name)), getenv() function is
+used to get environment variables with *name as representing the name of the
+variable. 
 
-. _memmove.c = (Syntax: void *_memmove(void *dest, const void *src, size_t n)), it is important to implement
-memmove() function in this project as it handles memory overlapping between the *src and *dest preventing it
-for corrrupting the process. 
+._memmove.c = (Syntax: void *_memmove(void *dest, const void *src, size_t n)),
+it is important to implement memmove() function in this project as it avoiding
+memory overlapping between the *src and *dest preventing it for corrrupting the
+process. 
 
-. _strcmp.c = (Syntax: int _strcmp(const char *s1, const char *s2)), strcmp() function compares between 2
-strings. This is helpful when comparing between environment variables as the program requires to choose the
-right variable to execute.
+._strcmp.c = (Syntax: int _strcmp(const char *s1, const char *s2)), strcmp()
+function compares between 2 strings. This is helpful when comparing between
+environment variables as the program requires to choose the right variable to
+execute.
 
-. _strcspn.c = (Syntax: size_t _strcspn(const char *s, const char *reject)), strcspn() work with tokenize string
-segments. *s is th string that is scanned along the string *reject. The function calculates the length of *s and
-determine whether there are characters that matches string *reject. The function returns to the index value 
+._strcspn.c = (Syntax: size_t _strcspn(const char *s, const char *reject)),
+strcspn() work with tokenize string segments. *s is the string that is scanned
+along the string *reject. The function calculates the length of *s and determine
+whether there are characters that matches string *reject. The function returns to the index value 
 of initial tokenize string of *s that is not found in *reject and length of *s if otherwise. This is a helpful
 function, as it validates tokenize string, removing unwanted string characters.
 
