@@ -66,6 +66,7 @@ To use the custom simple_shell program, include the main.h header file in your p
 ```
 
 ### :fax: Man Page
+Read the manual page
 ```
 man ./man_1_simple_shell
 ```
