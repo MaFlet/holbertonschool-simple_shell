@@ -4,7 +4,7 @@
 #include <string.h>
 #include <signal.h>
 #include "shell.h"
-static char *command_buffer;
+char *command_buffer = NULL;
 /**
  * clean_up - Frees allocated memory and resets the buffer pointer.
  * Return: nothing
